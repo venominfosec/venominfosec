@@ -1,9 +1,8 @@
 # Alex Poorman
 Penetration Tester at NetSPI
 
-- 🔭 I’m currently working on automating the penetration testing process for web application, external network, and AWS cloud tests
-- 🌱 I’m currently learning how to be a more efficient penetration tester and advanced Python development
-- 👯 I’m looking to collaborate on open source pentesting tool creation
+- 🔭 I’m working on automating the penetration testing process for web application, external network, and AWS cloud tests
+- 🌱 I’m learning how to be a more efficient penetration tester and advanced Python development
 
 # Open Source Tools I've Created
 ## NetblockTool
@@ -46,13 +45,25 @@ https://github.com/NetSPI/AutoDirbuster
  ```
 **Why?**
 
-OWASP Dirbuster is a great directory buster but running it against multiple IPs and ports is a very manual process with a lot of downtime between scans. This script attempts to automate that process and eliminates downtime between scans.
+Ffuf is a great directory buster but running it against multiple IPs and ports is a very manual process with a lot of downtime between scans. This script attempts to automate that process and eliminates downtime between scans.
 
 **How it works:**
 * A list of targets is provided
 * A TCP connect scan is done on the target port to test if it's open
-* If it's open, HTTP and HTTPS requests are sent to determine if the service is HTTP-based and whether it requires SSL
-* If the service is HTTP, a check is done to determine if a previous report file is in the same directory. Report files follow the format: `DirBuster-Report-IP-port.txt`
-* Dirbuster is run using Python's `subprocess.Popen()`. If a timeout is specified, then after the timeout period, a `SIGINT` signal is sent to Dirbuster so it can safely shutdown and write results to disk. A note is added to the report indicating that the scan timed out.
+* If the port open, HTTP and HTTPS requests are sent to determine if the service is HTTP-based and whether it requires TLS
+* If the service is HTTP, a check is done to determine if a previous report file is in the same directory
+  * Report files follow the format: `ffuf-report-{proto}_{target}_{port}'`
+* ffuf is run using Python's `subprocess.Popen()`
 * The next IP:port goes through the same process (TCP connect, HTTP service query, dirbust)
 
+## SecretsChecker
+Automatically check for secrets in files
+
+https://github.com/venominfosec/SecretsChecker
+
+![SecretsChecker](https://i.imgur.com/qXXqpXV.png)
+
+**Overview:**
+* Use SecretsChecker to files for hardcoded secrets
+* Secrets are identified using regular expressions
+* 45 different secret types currently supported
