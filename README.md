@@ -32,7 +32,7 @@ https://github.com/NetSPI/NetblockTool
 * Netblocks are sorted by confidence score and written to a CSV
 
 ## AutoDirbuster
-Automatically run and save Dirbuster scans for multiple IPs
+Automatically run and save ffuf scans for multiple IPs
 
 https://github.com/NetSPI/AutoDirbuster
 
